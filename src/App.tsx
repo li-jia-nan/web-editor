@@ -11,12 +11,14 @@ const lang = ['C++', 'Java', 'Python', 'Python3', 'C', 'C#', 'javascript', 'Type
 
 const App: React.FC = () => {
   const [value, setValue] = useState<string | undefined>('');
+  const [defaultLanguage, setDefaultLanguage] = useState<string>('javascript');
   return (
     <div className="App">
       <Select
-        defaultValue={'javascript'}
+        defaultValue={defaultLanguage}
         style={{ width: 200, margin: 20 }}
         menuItemSelectedIcon={<CheckOutlined />}
+        onChange={setDefaultLanguage}
       >
         {lang.map(lang => (
           <Option value={lang} key={lang}>
@@ -25,8 +27,8 @@ const App: React.FC = () => {
         ))}
       </Select>
       <div className="content">
-        <EditorView value={value} setValue={setValue} />
-        <Preview value={value} />
+        <EditorView defaultLanguage={defaultLanguage} value={value} setValue={setValue} />
+        <Preview defaultLanguage={defaultLanguage} value={value} />
       </div>
     </div>
   );

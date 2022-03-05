@@ -5,12 +5,13 @@ import './index.scss';
 
 interface Props {
   value: string | undefined;
+  defaultLanguage: string;
 }
 
-const Preview: React.FC<Props> = ({ value }) => {
+const Preview: React.FC<Props> = ({ value, defaultLanguage }) => {
   return (
     <div className="preview">
-      <Highlight className="javascript">{value}</Highlight>
+      <Highlight className={defaultLanguage}>{value}</Highlight>
     </div>
   );
 };
