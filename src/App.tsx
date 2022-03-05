@@ -1,12 +1,16 @@
-import React from 'react';
-import Editor from '@monaco-editor/react';
+import React, { useState } from 'react';
 import { Select } from 'antd';
-import './index.scss';
 import { CheckOutlined } from '@ant-design/icons';
+import EditorView from './Editor';
+import Preview from './Preview';
+import './index.scss';
 
 const { Option } = Select;
 
+const lang = ['C++', 'Java', 'Python', 'Python3', 'C', 'C#', 'javascript', 'TypeScript'];
+
 const App: React.FC = () => {
+  const [value, setValue] = useState<string | undefined>('');
   return (
     <div className="App">
       <Select
@@ -14,18 +18,16 @@ const App: React.FC = () => {
         style={{ width: 200, margin: 20 }}
         menuItemSelectedIcon={<CheckOutlined />}
       >
-        {['C++', 'Java', 'Python', 'Python3', 'C', 'C#', 'javascript', 'TypeScript'].map(lang => (
+        {lang.map(lang => (
           <Option value={lang} key={lang}>
             {lang}
           </Option>
         ))}
       </Select>
-      <Editor
-        className="editor"
-        defaultLanguage={'javascript'}
-        defaultValue={'// value'}
-        options={{ scrollBeyondLastLine: false, theme: 'vs-dark' }}
-      />
+      <div className="content">
+        <EditorView value={value} setValue={setValue} />
+        <Preview value={value} />
+      </div>
     </div>
   );
 };

@@ -1,17 +1,33 @@
 @import '~antd/dist/antd.css';
+
 html,
 body {
   width: 100%;
   height: 100%;
-  .App {
-    margin: 0 auto 0;
-    width: 75%;
-    height: 75vh;
-    box-shadow: 0 3px 6px -4px #0000001f, 0 6px 16px #00000014, 0 10px 28px 8px #0000000d;
-    overflow: hidden;
-    .editor {
-      width: 100%;
-      height: 91%;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  #root {
+    width: 100%;
+    height: 100%;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    .App {
+      display: flex;
+      flex-direction: column;
+      justify-content: flex-start;
+      align-items: flex-start;
+      margin: 0 auto 60px;
+      width: 80%;
+      height: 80%;
+      box-shadow: 0 3px 6px -4px #0000001f, 0 6px 16px #00000014, 0 10px 28px 8px #0000000d;
+      overflow: hidden;
+      .content {
+        display: flex;
+        width: 100%;
+        height: 100%;
+      }
     }
   }
 }
